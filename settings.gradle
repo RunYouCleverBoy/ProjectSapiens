@@ -1,0 +1,13 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+dependencyResolutionManagement {
+    // Note, I had to change it from
+    //     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS) because otherwise, it can't compile.
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Project Sapiens"
+include ':app'
