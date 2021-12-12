@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.playgrounds.projectsapiens.databinding.RecyclerLayoutBinding;
 
-public class Part1Fragment extends Fragment {
+public class FeedFragment extends Fragment {
     private RecyclerLayoutBinding binding;
 
     @Nullable
@@ -28,12 +28,12 @@ public class Part1Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Context context = requireContext();
-        Part1ViewModel viewModel = new ViewModelProvider(this,
-                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(Part1ViewModel.class);
+        FragmentViewModel viewModel = new ViewModelProvider(this,
+                new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(FragmentViewModel.class);
         RecyclerView recycler = binding.part1Recycler;
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         PositionResolver resolver = new PositionResolver();
-        Part1Adapter adapter = new Part1Adapter(resolver);
+        FeedAdapter adapter = new FeedAdapter(resolver);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
 

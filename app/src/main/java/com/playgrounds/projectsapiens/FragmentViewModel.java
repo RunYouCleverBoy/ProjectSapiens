@@ -14,12 +14,12 @@ import com.taboola.android.Taboola;
 
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class Part1ViewModel extends AndroidViewModel {
+public class FragmentViewModel extends AndroidViewModel {
     private final PublisherInfo publisherInfo = new PublisherInfo(getApplication().getString(R.string.taboola_id));
-    private final Part1Repository part1Repository = new Part1Repository();
+    private final FeedRepository feedRepository = new FeedRepository();
     private final MutableLiveData<ListItem[]> dataLiveData = new MutableLiveData<>();
 
-    public Part1ViewModel(@NonNull Application application) {
+    public FragmentViewModel(@NonNull Application application) {
         super(application);
         Taboola.init(publisherInfo);
     }
@@ -29,7 +29,7 @@ public class Part1ViewModel extends AndroidViewModel {
     }
 
     public void FetchData() {
-        part1Repository.fetchData(getApplication().getString(R.string.json_uri))
+        feedRepository.fetchData(getApplication().getString(R.string.json_uri))
                 .subscribeOn(Schedulers.io())
                 .doOnSuccess(listOfItems -> {
                     FeedListItem[] items = listOfItems.stream().map(this::convertFrom).toArray(FeedListItem[]::new);

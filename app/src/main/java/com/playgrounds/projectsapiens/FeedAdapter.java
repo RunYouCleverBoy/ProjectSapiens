@@ -12,11 +12,11 @@ import com.playgrounds.projectsapiens.listholders.ListItemHolder;
 import com.playgrounds.projectsapiens.listitems.ListItem;
 import com.playgrounds.projectsapiens.listitems.ListItemKind;
 
-public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder<? extends ListItem>> {
+public class FeedAdapter extends RecyclerView.Adapter<ListItemHolder<? extends ListItem>> {
     private ListItem[] data = new ListItem[]{};
     private final PositionResolver resolver;
 
-    public Part1Adapter(PositionResolver resolver) {
+    public FeedAdapter(PositionResolver resolver) {
         this.resolver = resolver;
     }
 

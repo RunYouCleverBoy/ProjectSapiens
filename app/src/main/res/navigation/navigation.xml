@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/part1Fragment"
-        android:name="com.playgrounds.projectsapiens.Part1Fragment"
+        android:name="com.playgrounds.projectsapiens.FeedFragment"
         android:label="Part1Fragment" />
 </navigation>
