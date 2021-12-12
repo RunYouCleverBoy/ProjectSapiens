@@ -12,11 +12,12 @@ import com.playgrounds.projectsapiens.listholders.FeedItemHolder;
 import com.playgrounds.projectsapiens.listholders.ListItemHolder;
 import com.playgrounds.projectsapiens.listholders.TaboolaFeedHolder;
 import com.playgrounds.projectsapiens.listholders.TaboolaWidgetHolder;
+import com.playgrounds.projectsapiens.listitems.ListItem;
 import com.playgrounds.projectsapiens.listitems.ListItemKind;
 
 public class HolderFactory {
     @NonNull
-    public static ListItemHolder create(ListItemKind kind, LayoutInflater inflater, ViewGroup parent) {
+    public static ListItemHolder<? extends ListItem> create(ListItemKind kind, LayoutInflater inflater, ViewGroup parent) {
         switch (kind) {
             case FEED_ITEM:
                 return new FeedItemHolder(FeedRecyclerCellBinding.inflate(inflater, parent, false));

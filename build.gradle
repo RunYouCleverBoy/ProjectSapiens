@@ -11,6 +11,8 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
+        mavenCentral()
         maven {
             // Taboola:
             url "https://taboolapublic.jfrog.io/artifactory/mobile-release"

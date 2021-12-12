@@ -17,6 +17,7 @@ public final class FeedItemHolder extends ListItemHolder<FeedListItem> {
         this.viewBinding = viewBinding;
     }
 
+    @Override
     public void bind(FeedListItem item) {
         String title = item.title != null ? item.title : "";
         String description = item.description != null ? item.description : "";

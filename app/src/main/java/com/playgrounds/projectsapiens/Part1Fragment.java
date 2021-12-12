@@ -32,7 +32,8 @@ public class Part1Fragment extends Fragment {
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(Part1ViewModel.class);
         RecyclerView recycler = binding.part1Recycler;
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-        Part1Adapter adapter = new Part1Adapter();
+        PositionResolver resolver = new PositionResolver();
+        Part1Adapter adapter = new Part1Adapter(resolver);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
 

@@ -12,10 +12,12 @@ import com.playgrounds.projectsapiens.listholders.ListItemHolder;
 import com.playgrounds.projectsapiens.listitems.ListItem;
 import com.playgrounds.projectsapiens.listitems.ListItemKind;
 
-public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder> {
+public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder<? extends ListItem>> {
     private ListItem[] data = new ListItem[]{};
+    private final PositionResolver resolver;
 
     public Part1Adapter(PositionResolver resolver) {
+        this.resolver = resolver;
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -26,21 +28,21 @@ public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        return resolver.get(position);
     }
 
     @NonNull
     @Override
-    public ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListItemHolder<? extends ListItem> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) parent.getContext()).getLayoutInflater();
         return HolderFactory.create(ListItemKind.valueOf(viewType), inflater, parent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
+        //noinspection unchecked
         holder.bind(data[position]);
     }
-
 
     @Override
     public int getItemCount() {

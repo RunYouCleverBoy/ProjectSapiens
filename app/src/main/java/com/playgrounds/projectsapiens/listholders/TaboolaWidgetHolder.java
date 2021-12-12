@@ -1,15 +1,19 @@
 package com.playgrounds.projectsapiens.listholders;
 
 import com.playgrounds.projectsapiens.databinding.TaboolaWidgetCellBinding;
-import com.playgrounds.projectsapiens.listitems.ListItem;
+import com.playgrounds.projectsapiens.listitems.TaboolaListItem;
+import com.taboola.android.TaboolaWidget;
 
-public class TaboolaWidgetHolder extends ListItemHolder {
-    public TaboolaWidgetHolder(TaboolaWidgetCellBinding inflate) {
-        super(inflate.getRoot());
+public class TaboolaWidgetHolder extends ListItemHolder<TaboolaListItem> {
+    public final TaboolaWidget widget;
+
+    public TaboolaWidgetHolder(TaboolaWidgetCellBinding binding) {
+        super(binding.getRoot());
+        this.widget = binding.taboolaView;
     }
 
     @Override
-    public void bind(ListItem data) {
+    public void bind(TaboolaListItem data) {
 
     }
 }
