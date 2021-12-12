@@ -8,7 +8,7 @@ import com.playgrounds.projectsapiens.databinding.FeedRecyclerCellBinding;
 import com.playgrounds.projectsapiens.listitems.FeedListItem;
 import com.squareup.picasso.Picasso;
 
-final class FeedItemHolder extends ListItemHolder<FeedListItem> {
+public final class FeedItemHolder extends ListItemHolder<FeedListItem> {
     private static final Drawable placeholder = new ColorDrawable(Color.LTGRAY);
     private final FeedRecyclerCellBinding viewBinding;
 

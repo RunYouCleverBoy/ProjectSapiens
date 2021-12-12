@@ -46,7 +46,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
     //Include the Taboola SDK binary - Instructions are a mish-mash. Broken. Tried to make it work somehow..
-    implementation "com.taboola:android-sdk:2.0.1"
+    implementation "com.taboola:android-sdk:2.9.2"
     implementation "androidx.browser:browser:1.4.0"
     // If you're targeting API 29 or above, add this dependency as well:
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'

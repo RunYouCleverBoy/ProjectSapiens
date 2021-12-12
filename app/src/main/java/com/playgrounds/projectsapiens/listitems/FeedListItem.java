@@ -15,9 +15,4 @@ public class FeedListItem implements ListItem {
         this.description = description;
         this.thumbnailUri = thumbnailUri;
     }
-
-    @Override
-    public int getKindId() {
-        return 1;
-    }
 }

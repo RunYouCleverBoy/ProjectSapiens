@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.playgrounds.projectsapiens.listholders.ListItemHolder;
 import com.playgrounds.projectsapiens.listitems.ListItem;
+import com.playgrounds.projectsapiens.listitems.ListItemKind;
 
-public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder<ListItem>> {
+public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder> {
     private ListItem[] data = new ListItem[]{};
+
+    public Part1Adapter(PositionResolver resolver) {
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     public <T extends ListItem> void setData(T[] data) {
@@ -27,13 +31,13 @@ public class Part1Adapter extends RecyclerView.Adapter<ListItemHolder<ListItem>>
 
     @NonNull
     @Override
-    public ListItemHolder<ListItem> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) parent.getContext()).getLayoutInflater();
-        return HolderFactory.create(viewType, inflater, parent);
+        return HolderFactory.create(ListItemKind.valueOf(viewType), inflater, parent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListItemHolder<ListItem> holder, int position) {
+    public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
         holder.bind(data[position]);
     }
 
