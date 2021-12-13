@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
-    app:startDestination="@id/part1Fragment">
+    app:startDestination="@id/feedFragment">
 
     <fragment
-        android:id="@+id/part1Fragment"
+        android:id="@+id/feedFragment"
         android:name="com.playgrounds.projectsapiens.FeedFragment"
         android:label="Part1Fragment" />
 </navigation>

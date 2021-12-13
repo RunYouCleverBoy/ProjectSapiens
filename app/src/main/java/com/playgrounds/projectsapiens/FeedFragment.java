@@ -1,5 +1,6 @@
 package com.playgrounds.projectsapiens;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.playgrounds.projectsapiens.databinding.RecyclerLayoutBinding;
 import com.playgrounds.projectsapiens.model.PositionResolver;
 import com.playgrounds.projectsapiens.model.PositionResolverImpl;
+import com.playgrounds.projectsapiens.model.listitems.ListItem;
 
 public class FeedFragment extends Fragment {
     private RecyclerLayoutBinding binding;
@@ -39,8 +41,23 @@ public class FeedFragment extends Fragment {
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
 
-        viewModel.getDataLiveData().observe(getViewLifecycleOwner(), adapter::setData);
+        viewModel.getDataLiveData().observe(getViewLifecycleOwner(), newDataResponse -> {
+            if (newDataResponse instanceof FragmentViewModel.NewDataResponse.SuccessResponse) {
+                ListItem[] data = ((FragmentViewModel.NewDataResponse.SuccessResponse) newDataResponse).items;
+                adapter.setData(data);
+            } else if (newDataResponse instanceof FragmentViewModel.NewDataResponse.FailureResponse) {
+                showError(((FragmentViewModel.NewDataResponse.FailureResponse) newDataResponse).reason);
+            }
+        });
         viewModel.FetchData();
+    }
+
+    private void showError(String reason) {
+        new AlertDialog.Builder(requireActivity())
+                .setTitle(R.string.error)
+                .setMessage(reason)
+                .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> dialogInterface.dismiss())
+                .show();
     }
 
     @Override

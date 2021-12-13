@@ -14,6 +14,10 @@ public class TaboolaFeedHolder extends ListItemHolder<TaboolaListItem> {
     public TaboolaFeedHolder(TaboolaFeedCellBinding binding) {
         super(binding.getRoot());
         widget = binding.taboolaView;
+    }
+
+    @Override
+    public void bind(TaboolaListItem data) {
         ViewGroup.LayoutParams layoutParams = widget.getLayoutParams();
         layoutParams.height = SdkDetailsHelper.getDisplayHeight(widget.getContext()) * 2;
         widget.setLayoutParams(layoutParams);
@@ -22,10 +26,5 @@ public class TaboolaFeedHolder extends ListItemHolder<TaboolaListItem> {
         widget.setProgressBarDuration(1); //Sets progressbar duration to 1 second
         widget.setProgressBarColor(Color.MAGENTA); //Sets progressbar color to Magenta
         widget.fetchContent();
-    }
-
-    @Override
-    public void bind(TaboolaListItem data) {
-
     }
 }

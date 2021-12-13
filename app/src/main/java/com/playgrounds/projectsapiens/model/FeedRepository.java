@@ -16,7 +16,7 @@ import retrofit2.http.GET;
 
 public class FeedRepository {
     @NonNull
-    public static ListItem[] mapPostsToArray(java.util.List<FeedItemsFromServer> listOfItems) {
+    static ListItem[] mapPostsToArray(java.util.List<FeedItemsFromServer> listOfItems) {
         final ListItem[] result = new ListItem[PositionResolverImpl.OVERALL_POSITIONS];
         int index = 0;
         PositionResolverImpl positionResolver = new PositionResolverImpl();
@@ -34,7 +34,7 @@ public class FeedRepository {
         return result;
     }
 
-    public Single<List<FeedItemsFromServer>> fetchData(String uriStr) {
+    public @io.reactivex.rxjava3.annotations.NonNull Single<ListItem[]> fetchData(String uriStr) {
         RxJava3CallAdapterFactory rxAdapter = RxJava3CallAdapterFactory.create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(uriStr)
@@ -42,7 +42,7 @@ public class FeedRepository {
                 .addCallAdapterFactory(rxAdapter)
                 .build();
         FeedDataApi api = retrofit.create(FeedDataApi.class);
-        return api.load();
+        return api.load().map(FeedRepository::mapPostsToArray);
     }
 
     @NonNull

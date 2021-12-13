@@ -10,11 +10,10 @@ public class TaboolaWidgetHolder extends ListItemHolder<TaboolaListItem> {
     public TaboolaWidgetHolder(TaboolaWidgetCellBinding binding) {
         super(binding.getRoot());
         widget = binding.taboolaView;
-        widget.fetchContent();
     }
 
     @Override
     public void bind(TaboolaListItem data) {
-
+        widget.fetchContent();
     }
 }
