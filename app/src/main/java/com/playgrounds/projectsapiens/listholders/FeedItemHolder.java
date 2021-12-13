@@ -19,12 +19,16 @@ public final class FeedItemHolder extends ListItemHolder<FeedListItem> {
 
     @Override
     public void bind(FeedListItem item) {
-        String title = item.title != null ? item.title : "";
-        String description = item.description != null ? item.description : "";
+        String title = item != null && item.title != null ? item.title : "";
+        String description = item != null && item.description != null ? item.description : "";
         viewBinding.part1CellTitle.setText(title);
         viewBinding.part1CellDescription.setText(description);
-        Picasso.with(viewBinding.getRoot().getContext()).load(item.thumbnailUri)
-                .placeholder(placeholder)
-                .into(viewBinding.part1CellThumbnail);
+        if (item != null) {
+            Picasso.with(viewBinding.getRoot().getContext()).load(item.thumbnailUri)
+                    .placeholder(placeholder)
+                    .into(viewBinding.part1CellThumbnail);
+        } else {
+            viewBinding.part1CellThumbnail.setImageDrawable(placeholder);
+        }
     }
 }

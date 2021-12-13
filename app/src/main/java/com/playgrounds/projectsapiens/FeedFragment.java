@@ -30,9 +30,9 @@ public class FeedFragment extends Fragment {
         Context context = requireContext();
         FragmentViewModel viewModel = new ViewModelProvider(this,
                 new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication())).get(FragmentViewModel.class);
-        RecyclerView recycler = binding.part1Recycler;
+        RecyclerView recycler = binding.feedRecycler;
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-        PositionResolver resolver = new PositionResolver();
+        PositionResolver resolver = new PositionResolverImpl();
         FeedAdapter adapter = new FeedAdapter(resolver);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);

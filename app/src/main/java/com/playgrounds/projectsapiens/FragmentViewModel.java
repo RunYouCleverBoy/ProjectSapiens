@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.playgrounds.projectsapiens.listitems.FeedListItem;
 import com.playgrounds.projectsapiens.listitems.ListItem;
 import com.taboola.android.PublisherInfo;
 import com.taboola.android.Taboola;
@@ -15,6 +14,7 @@ import com.taboola.android.Taboola;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FragmentViewModel extends AndroidViewModel {
+    @SuppressWarnings("FieldCanBeLocal")
     private final PublisherInfo publisherInfo = new PublisherInfo(getApplication().getString(R.string.taboola_id));
     private final FeedRepository feedRepository = new FeedRepository();
     private final MutableLiveData<ListItem[]> dataLiveData = new MutableLiveData<>();
@@ -32,12 +32,8 @@ public class FragmentViewModel extends AndroidViewModel {
         feedRepository.fetchData(getApplication().getString(R.string.json_uri))
                 .subscribeOn(Schedulers.io())
                 .doOnSuccess(listOfItems -> {
-                    FeedListItem[] items = listOfItems.stream().map(this::convertFrom).toArray(FeedListItem[]::new);
+                    ListItem[] items = FeedRepository.mapPostsToArray(listOfItems);
                     dataLiveData.postValue(items);
                 }).subscribe();
-    }
-
-    private FeedListItem convertFrom(Part1ServerItem item) {
-        return new FeedListItem(item.title, item.description, item.thumbnailUrl);
     }
 }
