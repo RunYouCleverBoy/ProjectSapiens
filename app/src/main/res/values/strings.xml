@@ -2,5 +2,6 @@
     <string name="app_name">Project Sapiens</string>
     <string name="json_uri" translatable="false">https://s3-us-west-2.amazonaws.com/taboola-mobile-sdk/public/home_assignment/</string>
     <string name="taboola_id" translatable="false">sdk-tester</string>
-    <string name="error">Error</string>
+    <string name="error">Uh, oh… Error</string>
+    <string name="chooser_text">Please choose the Email app</string>
 </resources>

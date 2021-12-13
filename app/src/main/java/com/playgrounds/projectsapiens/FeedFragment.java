@@ -2,6 +2,7 @@ package com.playgrounds.projectsapiens;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,8 @@ public class FeedFragment extends Fragment {
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(this::sendMail);
+
         viewModel.getDataLiveData().observe(getViewLifecycleOwner(), newDataResponse -> {
             if (newDataResponse instanceof FragmentViewModel.NewDataResponse.SuccessResponse) {
                 ListItem[] data = ((FragmentViewModel.NewDataResponse.SuccessResponse) newDataResponse).items;
@@ -50,6 +53,14 @@ public class FeedFragment extends Fragment {
             }
         });
         viewModel.FetchData();
+    }
+
+    private void sendMail(String subject, String message, String thumbnailUri) {
+        Intent intent = new Intent(Intent.ACTION_SEND)
+                .setType("text/html")
+                .putExtra(Intent.EXTRA_SUBJECT, subject)
+                .putExtra(Intent.EXTRA_TEXT, thumbnailUri + "\n" + message);
+        startActivity(Intent.createChooser(intent, getString(R.string.chooser_text)));
     }
 
     private void showError(String reason) {
