@@ -1,5 +1,7 @@
 package com.playgrounds.projectsapiens;
 
+import androidx.annotation.NonNull;
+
 import com.google.common.truth.Truth;
 import com.playgrounds.projectsapiens.listitems.FeedListItem;
 import com.playgrounds.projectsapiens.listitems.ListItem;
@@ -39,11 +41,18 @@ public class FeedRepositoryTest {
         Truth.assertThat(posts.length).isEqualTo(PositionResolverImpl.OVERALL_POSITIONS);
         Truth.assertThat(posts[PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_1]).isNull();
         Truth.assertThat(posts[PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_2]).isNull();
-        HashSet<Integer> indicesWithItem = new HashSet<>();
-        for (int i = 0; i < posts.length; i++) {
-            indicesWithItem.remove(PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_1);
-            indicesWithItem.remove(PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_2);
-        }
+        HashSet<Integer> indicesWithItem = indicesOfFeed(posts.length);
         Truth.assertThat(indicesWithItem.stream().allMatch(index -> posts[index] instanceof FeedListItem)).isTrue();
+    }
+
+    @NonNull
+    private HashSet<Integer> indicesOfFeed(int length) {
+        HashSet<Integer> indicesWithItem = new HashSet<>();
+        for (int i = 0; i < length; i++) {
+            indicesWithItem.add(i);
+        }
+        indicesWithItem.remove(PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_1);
+        indicesWithItem.remove(PositionResolverImpl.INDEX_RESERVED_FOR_TABOOLA_2);
+        return indicesWithItem;
     }
 }
