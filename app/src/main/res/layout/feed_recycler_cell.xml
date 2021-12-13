@@ -6,47 +6,45 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/part1_cell_title"
+        android:id="@+id/feed_cell_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/part1_cell_thumbnail_border"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_cell_thumbnail"
         tools:text="Title" />
 
     <TextView
-        android:id="@+id/part1_cell_description"
+        android:id="@+id/feed_cell_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:justificationMode="inter_word"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/part1_cell_thumbnail_border"
-        app:layout_constraintTop_toBottomOf="@+id/part1_cell_title"
-        tools:text="Description" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_cell_title"
+        tools:targetApi="o"
+        tools:text="Description: Ipsum lorem opossum awesome longdescriptionwordthatmayincludesomeletters" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/part1_cell_thumbnail"
+        android:id="@+id/feed_cell_thumbnail"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/part1_cell_thumbnail_border"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/part1_cell_thumbnail_border"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="60dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

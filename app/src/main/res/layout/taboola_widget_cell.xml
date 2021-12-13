@@ -12,6 +12,7 @@
         taboola:tb_page_type="article"
         taboola:tb_placement="below article"
         taboola:tb_publisher="sdk-tester"
+        taboola:tb_url="https://blog.taboola.com"
         taboola:tb_target_type="mix" />
 
 </FrameLayout>

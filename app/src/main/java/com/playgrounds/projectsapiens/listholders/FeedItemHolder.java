@@ -1,15 +1,12 @@
 package com.playgrounds.projectsapiens.listholders;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.view.View;
 
 import com.playgrounds.projectsapiens.databinding.FeedRecyclerCellBinding;
 import com.playgrounds.projectsapiens.listitems.FeedListItem;
 import com.squareup.picasso.Picasso;
 
 public final class FeedItemHolder extends ListItemHolder<FeedListItem> {
-    private static final Drawable placeholder = new ColorDrawable(Color.LTGRAY);
     private final FeedRecyclerCellBinding viewBinding;
 
     public FeedItemHolder(FeedRecyclerCellBinding viewBinding) {
@@ -21,14 +18,14 @@ public final class FeedItemHolder extends ListItemHolder<FeedListItem> {
     public void bind(FeedListItem item) {
         String title = item != null && item.title != null ? item.title : "";
         String description = item != null && item.description != null ? item.description : "";
-        viewBinding.part1CellTitle.setText(title);
-        viewBinding.part1CellDescription.setText(description);
+        viewBinding.feedCellTitle.setText(title);
+        viewBinding.feedCellDescription.setText(description);
         if (item != null) {
+            viewBinding.feedCellThumbnail.setVisibility(View.VISIBLE);
             Picasso.with(viewBinding.getRoot().getContext()).load(item.thumbnailUri)
-                    .placeholder(placeholder)
-                    .into(viewBinding.part1CellThumbnail);
+                    .into(viewBinding.feedCellThumbnail);
         } else {
-            viewBinding.part1CellThumbnail.setImageDrawable(placeholder);
+            viewBinding.feedCellThumbnail.setVisibility(View.GONE);
         }
     }
 }
