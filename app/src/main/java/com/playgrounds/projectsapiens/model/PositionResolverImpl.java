@@ -1,6 +1,6 @@
-package com.playgrounds.projectsapiens;
+package com.playgrounds.projectsapiens.model;
 
-import com.playgrounds.projectsapiens.listitems.ListItemKind;
+import com.playgrounds.projectsapiens.model.listitems.ListItemKind;
 
 public class PositionResolverImpl implements PositionResolver {
     public static final int OVERALL_POSITIONS = 10;

@@ -7,7 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.playgrounds.projectsapiens.listitems.ListItem;
+import com.playgrounds.projectsapiens.model.FeedRepository;
+import com.playgrounds.projectsapiens.model.listitems.ListItem;
 import com.taboola.android.PublisherInfo;
 import com.taboola.android.Taboola;
 

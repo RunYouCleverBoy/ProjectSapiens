@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.playgrounds.projectsapiens.databinding.RecyclerLayoutBinding;
+import com.playgrounds.projectsapiens.model.PositionResolver;
+import com.playgrounds.projectsapiens.model.PositionResolverImpl;
 
 public class FeedFragment extends Fragment {
     private RecyclerLayoutBinding binding;

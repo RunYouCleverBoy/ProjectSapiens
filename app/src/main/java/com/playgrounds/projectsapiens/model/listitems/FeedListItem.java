@@ -1,4 +1,4 @@
-package com.playgrounds.projectsapiens.listitems;
+package com.playgrounds.projectsapiens.model.listitems;
 
 /**
  * A struct for list item

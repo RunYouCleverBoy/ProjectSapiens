@@ -1,10 +1,10 @@
-package com.playgrounds.projectsapiens;
+package com.playgrounds.projectsapiens.model;
 
 import androidx.annotation.NonNull;
 
-import com.playgrounds.projectsapiens.listitems.FeedListItem;
-import com.playgrounds.projectsapiens.listitems.ListItem;
-import com.playgrounds.projectsapiens.listitems.ListItemKind;
+import com.playgrounds.projectsapiens.model.listitems.FeedListItem;
+import com.playgrounds.projectsapiens.model.listitems.ListItem;
+import com.playgrounds.projectsapiens.model.listitems.ListItemKind;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import retrofit2.http.GET;
 
 public class FeedRepository {
     @NonNull
-    static ListItem[] mapPostsToArray(java.util.List<FeedItemsFromServer> listOfItems) {
+    public static ListItem[] mapPostsToArray(java.util.List<FeedItemsFromServer> listOfItems) {
         final ListItem[] result = new ListItem[PositionResolverImpl.OVERALL_POSITIONS];
         int index = 0;
         PositionResolverImpl positionResolver = new PositionResolverImpl();
@@ -34,11 +34,6 @@ public class FeedRepository {
         return result;
     }
 
-    @NonNull
-    static FeedListItem convertFrom(FeedItemsFromServer item) {
-        return new FeedListItem(item.title, item.description, item.thumbnailUrl);
-    }
-
     public Single<List<FeedItemsFromServer>> fetchData(String uriStr) {
         RxJava3CallAdapterFactory rxAdapter = RxJava3CallAdapterFactory.create();
         Retrofit retrofit = new Retrofit.Builder()
@@ -48,6 +43,11 @@ public class FeedRepository {
                 .build();
         FeedDataApi api = retrofit.create(FeedDataApi.class);
         return api.load();
+    }
+
+    @NonNull
+    static FeedListItem convertFrom(FeedItemsFromServer item) {
+        return new FeedListItem(item.title, item.description, item.thumbnailUrl);
     }
 
 

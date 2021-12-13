@@ -1,4 +1,4 @@
-package com.playgrounds.projectsapiens;
+package com.playgrounds.projectsapiens.listholders;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,12 +8,8 @@ import androidx.annotation.NonNull;
 import com.playgrounds.projectsapiens.databinding.FeedRecyclerCellBinding;
 import com.playgrounds.projectsapiens.databinding.TaboolaFeedCellBinding;
 import com.playgrounds.projectsapiens.databinding.TaboolaWidgetCellBinding;
-import com.playgrounds.projectsapiens.listholders.FeedItemHolder;
-import com.playgrounds.projectsapiens.listholders.ListItemHolder;
-import com.playgrounds.projectsapiens.listholders.TaboolaFeedHolder;
-import com.playgrounds.projectsapiens.listholders.TaboolaWidgetHolder;
-import com.playgrounds.projectsapiens.listitems.ListItem;
-import com.playgrounds.projectsapiens.listitems.ListItemKind;
+import com.playgrounds.projectsapiens.model.listitems.ListItem;
+import com.playgrounds.projectsapiens.model.listitems.ListItemKind;
 
 public class HolderFactory {
     @NonNull

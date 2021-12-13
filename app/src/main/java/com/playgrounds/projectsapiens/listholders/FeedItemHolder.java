@@ -3,7 +3,7 @@ package com.playgrounds.projectsapiens.listholders;
 import android.view.View;
 
 import com.playgrounds.projectsapiens.databinding.FeedRecyclerCellBinding;
-import com.playgrounds.projectsapiens.listitems.FeedListItem;
+import com.playgrounds.projectsapiens.model.listitems.FeedListItem;
 import com.squareup.picasso.Picasso;
 
 public final class FeedItemHolder extends ListItemHolder<FeedListItem> {

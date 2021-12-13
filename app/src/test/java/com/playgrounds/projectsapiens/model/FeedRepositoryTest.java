@@ -1,10 +1,10 @@
-package com.playgrounds.projectsapiens;
+package com.playgrounds.projectsapiens.model;
 
 import androidx.annotation.NonNull;
 
 import com.google.common.truth.Truth;
-import com.playgrounds.projectsapiens.listitems.FeedListItem;
-import com.playgrounds.projectsapiens.listitems.ListItem;
+import com.playgrounds.projectsapiens.model.listitems.FeedListItem;
+import com.playgrounds.projectsapiens.model.listitems.ListItem;
 
 import org.junit.Test;
 
